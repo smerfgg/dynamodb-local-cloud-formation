@@ -38,6 +38,9 @@ class DynamoDbResourceParser:
 			provisionedThroughput['ReadCapacityUnits'] = int(provisionedThroughput['ReadCapacityUnits'])
 			provisionedThroughput['WriteCapacityUnits'] = int(provisionedThroughput['WriteCapacityUnits'])
 			return " --provisioned-throughput '" + json.JSONEncoder(sort_keys=True).encode(provisionedThroughput) + "'"
+		elif 'BillingMode' in self.json['Properties']:
+			billingMode = self.json['Properties']['BillingMode']
+			return " --billing-mode'" + json.JSONEncoder(sort_keys=True).encode(billingMode)
 		else: 
 			return ""
 
@@ -52,6 +55,9 @@ class DynamoDbResourceParser:
 					provisionedThroughput = index['ProvisionedThroughput']
 					provisionedThroughput['ReadCapacityUnits'] = int(provisionedThroughput['ReadCapacityUnits'])
 					provisionedThroughput['WriteCapacityUnits'] = int(provisionedThroughput['WriteCapacityUnits'])
+				elif 'BillingMode' in index:
+					billingMode = index['BillingMode']
+					return " --billing-mode'" + json.JSONEncoder(sort_keys=True).encode(billingMode)
 
 			return " --local-secondary-indexes '" + json.JSONEncoder(sort_keys=True).encode(localSecondaryIndexes) + "'"
 		else:
@@ -69,6 +75,9 @@ class DynamoDbResourceParser:
 					provisionedThroughput = index['ProvisionedThroughput']
 					provisionedThroughput['ReadCapacityUnits'] = int(provisionedThroughput['ReadCapacityUnits'])
 					provisionedThroughput['WriteCapacityUnits'] = int(provisionedThroughput['WriteCapacityUnits'])
+				elif 'BillingMode' in index:
+					billingMode = index['BillingMode']
+					return " --billing-mode'" + json.JSONEncoder(sort_keys=True).encode(billingMode)
 
 			return " --global-secondary-indexes '" + json.JSONEncoder(sort_keys=True).encode(globalSecondaryIndexes) + "'"
 		else:
