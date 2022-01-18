@@ -38,7 +38,7 @@ class DynamoDbResourceParser:
 			provisionedThroughput['ReadCapacityUnits'] = int(provisionedThroughput['ReadCapacityUnits'])
 			provisionedThroughput['WriteCapacityUnits'] = int(provisionedThroughput['WriteCapacityUnits'])
 			return " --provisioned-throughput '" + json.JSONEncoder(sort_keys=True).encode(provisionedThroughput) + "'"
-		elif 'BillingMode' in self.json['Properties']:
+		elif 'BillingMode' in self.json['Properties']['KeySchema']:
 			billingMode = self.json['Properties']['KeySchema']['BillingMode']
 			return " --billing-mode'" + json.JSONEncoder(sort_keys=True).encode(billingMode)
 		else: 
