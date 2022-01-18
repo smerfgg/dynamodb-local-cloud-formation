@@ -44,7 +44,7 @@ class DynamoDbResourceParser:
 	def billingMode(self):
 		if 'BillingMode' in self.json['Properties']:
 			billingMode = self.json['Properties']['BillingMode']
-			return " --billing-mode '" + json.JSONEncoder(sort_keys=True).encode(billingMode)
+			return " --billing-mode '" + json.JSONEncoder(sort_keys=True).encode(billingMode) + "'"
 		return ""
 
 	def localSecondaryIndexes(self):
