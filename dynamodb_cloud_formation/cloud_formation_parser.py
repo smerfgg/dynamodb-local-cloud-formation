@@ -21,12 +21,12 @@ class CloudFormationParser:
     def load_yaml(self, filename):
         # load the resource as YAML
         with open(filename) as fileHandle:
-            yamlData = yaml.load(fileHandle)
+            yamlData = yaml.load(fileHandle, Loader=yaml.FullLoader)
             return yamlData
 
     def parse_cloud_formation_template(self, file_name):
         try:
-            cloud_formation_json = self.load_yaml(file_name, Loader=yaml.FullLoader)
+            cloud_formation_json = self.load_yaml(file_name)
         except yaml.scanner.ScannerError:
             cloud_formation_json = self.load_json(file_name)
 

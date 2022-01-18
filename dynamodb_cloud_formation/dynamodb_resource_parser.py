@@ -79,7 +79,7 @@ class DynamoDbResourceParser:
 			return ""
 
 	def toCLI(self, region, endpoint_url):
-		command = ''.join(('aws dynamodb create-table --region ',
+		return ''.join(('aws dynamodb create-table --region ',
 				region,
 				' --endpoint-url ',
 				endpoint_url,
@@ -91,9 +91,3 @@ class DynamoDbResourceParser:
 				self.provisionedThroughput(),
 				self.billingMode(),
 				"\n"))
-
-		print command
-
-		return 	command
-
-
