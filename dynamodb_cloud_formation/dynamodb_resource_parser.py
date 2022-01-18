@@ -88,6 +88,6 @@ class DynamoDbResourceParser:
 				self.keySchema(),
 				self.localSecondaryIndexes(), 
 				self.globalSecondaryIndexes(), 
-				self.provisionedThroughput(),
 				self.billingMode(),
+				self.provisionedThroughput(),
 				"\n"))
