@@ -26,7 +26,7 @@ class CloudFormationParser:
 
     def parse_cloud_formation_template(self, file_name):
         try:
-            cloud_formation_json = self.load_yaml(file_name)
+            cloud_formation_json = self.load_yaml(file_name, Loader=yaml.FullLoader)
         except yaml.scanner.ScannerError:
             cloud_formation_json = self.load_json(file_name)
 
